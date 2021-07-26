@@ -1,0 +1,98 @@
+package com.bridgelabz;
+
+import java.util.Scanner;
+
+class TicTac6{
+    Scanner sc = new Scanner(System.in);
+
+    ////assign a Char 1D array as a static
+    static char[] arr = new char[10];
+    static boolean flag = true;
+
+    //(can Calling from Main method) assign a empty space char by using 1D array
+    void init() {
+        for (int i = 0; i < 10; i++) {
+            arr[i] = ' ';
+        }
+    }
+
+    //display Tic Tac Toe 1D array Box
+    //(can Calling from Main method)
+    static void disp() {
+        System.out.println("display Tic Tac Toe Box using 1D array");
+        System.out.println(arr[0] + " | " + arr[1] + " | " + arr[2] );
+        System.out.println("---------");
+        System.out.println(arr[3] + " | " + arr[4] + " | " + arr[5] );
+        System.out.println("---------");
+        System.out.println(arr[6] + " | " + arr[7] + " | " + arr[8] );
+        return;
+    }
+
+    //User can call this method by putting 'X' to specific index
+    static void putX(int x){
+        if(arr[x-1] != ' ')
+            System.out.println("No Space to enter the 'X' this cell");
+        else
+            arr[x-1] = 'X';
+
+    }
+
+    //User can call this method by putting 'O' to specific index
+    static void putO(int x){
+        if (arr[x-1] != ' ')
+            System.out.println("No Space to enter the 'O' this cell");
+        else
+            arr[x-1] = 'O';
+    }
+
+    void paly(){
+        System.out.print("Choose a letter X or O : ");
+        char cases = sc.next().charAt(0);
+        if ((cases != 'X') ||(cases != 'O'))
+            System.out.println("Enter Only Char 'O' or 'X' ");
+        switch (cases) {
+            case 'O':
+                System.out.println("Give the Index (1-9) of put O : ");
+                putO(sc.nextInt());
+                disp();
+                if( ((arr[0] == 'O') && (arr[1] == 'O') && (arr[2] == 'O')) || ((arr[3] == 'O') && (arr[4] == 'O') && (arr[5] == 'O')) || ((arr[6] == 'O') && (arr[7] == 'O') && (arr[8] == 'O')) || ((arr[0] == 'O') && (arr[3] == 'O') && (arr[6] == 'O')) || ((arr[1] == 'O') && (arr[4] == 'O') && (arr[7] == 'O')) || ((arr[2] == 'O') && (arr[5] == 'O') && (arr[8] == 'O')) || ((arr[0] == 'O') && (arr[4] == 'O') && (arr[8] == 'O')) || ((arr[2] == 'O') && (arr[4] == 'O') && (arr[6] == 'O')) ){
+                    System.out.println("*** 'O' Player is Winner ***");
+                    
+                }
+                break;
+            case 'X':
+                System.out.println("Give the Index (1-9) of put X : ");
+                putX(sc.nextInt());
+                disp();
+                if( ((arr[0] == 'X') && (arr[1] == 'X') && (arr[2] == 'X')) || ((arr[3] == 'X') && (arr[4] == 'X') && (arr[5] == 'X')) || ((arr[6] == 'X') && (arr[7] == 'X') && (arr[8] == 'X')) || ((arr[0] == 'X') && (arr[3] == 'X') && (arr[6] == 'X')) || ((arr[1] == 'X') && (arr[4] == 'X') && (arr[7] == 'X')) || ((arr[2] == 'X') && (arr[5] == 'X') && (arr[8] == 'X')) || ((arr[0] == 'X') && (arr[4] == 'X') && (arr[8] == 'X')) || ((arr[2] == 'X') && (arr[4] == 'X') && (arr[6] == 'X')) ){
+                    System.out.println("** 'X' Player is Winner ***");
+                    
+                }
+                break;
+        }
+
+    }
+}
+
+
+
+public class TicTacgameUC7 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        TicTac6 t = new TicTac6();
+        t.init();
+        t.disp();
+
+
+        while  ( ((t.arr[0] == ' ') || (t.arr[1] == ' ') || (t.arr[2] == ' ') || (t.arr[3] == ' ') || (t.arr[4] == ' ') || (t.arr[5] == ' ') || (t.arr[6] == ' ') || (t.arr[7] == ' ') || (t.arr[8] == ' ')) && t.flag) {
+
+            t.paly();
+
+        }
+
+
+
+    }
+
+}
